@@ -1,9 +1,10 @@
 from scipy import constants
-
+from sklearn import preprocessing
+import pandas as pd
 
 class FeatureExtractor(object):
     def __init__(self, columns = ['V', 'Vth', 'Vx', 'Vy', 'Vz', 'Bx', 'By', 'Bz', 'B', 'Np', 'RmsBob', 'Beta']):
-        pass
+        self.columns = columns
 
     def fit(self, X_df, y):
         return self
@@ -11,7 +12,12 @@ class FeatureExtractor(object):
     def transform(self, X_df):
         X_df_new = X_df.copy()
         X_df_new = compute_rolling_std(X_df_new, 'Beta', '2h')
-        return X_df_new[columns]
+
+        min_max_scaler = preprocessing.MinMaxScaler()
+        np_scaled = min_max_scaler.fit_transform(X_df_new[self.columns])
+        df_normalized = pd.DataFrame(np_scaled)
+
+        return df_normalized
 
 
 def compute_Beta(data):

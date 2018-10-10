@@ -12,9 +12,9 @@ class Classifier(BaseEstimator):
         self.model = make_pipeline(
             StandardScaler(), 
             GradientBoostingClassifier(
-                learning_rate = 0.05, 
+                learning_rate = 0.1, 
                 n_estimators = 200, 
-                subsample = 0.1))
+                subsample = 0.25))
 
     def fit(self, X, y):
         self.model.fit(X, y)
