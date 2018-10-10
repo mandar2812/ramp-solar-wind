@@ -421,9 +421,9 @@ def get_cv(X, y):
 
 def _read_data(path, type_):
 
-    fname = 'data_{}.parquet'.format(type_)
+    fname = 'data_{}.csv'.format(type_)
     fp = os.path.join(path, 'data', fname)
-    data = pd.read_parquet(fp)
+    data = pd.read_csv(fp, index_col = 0, parse_dates = True)
 
     fname = 'labels_{}.csv'.format(type_)
     fp = os.path.join(path, 'data', fname)

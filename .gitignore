@@ -106,3 +106,7 @@ ENV/
 # VS code directory
 .vscode
 .vscode/*
+
+# Exclude the data dir
+data
+data/*

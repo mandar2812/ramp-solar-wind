@@ -9,7 +9,7 @@ except ImportError:
 
 URLBASE = 'https://storage.ramp.studio/solar_wind/{}'
 DATA = [
-    'data_train.parquet', 'data_test.parquet']
+    'data_train.csv', 'data_test.csv']
 LABELS = [
     'labels_train.csv', 'labels_test.csv']
 
